@@ -1,0 +1,62 @@
+% layout 'default';
+% title "Mailicious | $folder";
+
+<div id="header">
+  <div class="content">
+    <h1><%= title %></h1>
+  </div>
+</div>
+
+<div id="wrapper">
+  <div class="content">
+    <p class="folder_status">
+      Number of messages: <%= $no_of_messages %>,
+    </p>
+
+    <table>
+      <tr>
+        <th>UID</th>
+        <th>From</th>
+        <th>Subject</th>
+      </tr>
+% for my $m (@$messages) {
+      <tr>
+        <td><%= $m->{uid} %></td>
+        <td>
+%   if ($m->{from}->{addr}) {
+          <a href="">
+            <strong><%= $m->{from}->{name} %></strong>
+          </a>
+          <br/>
+          <span class="addr"><%= $m->{from}->{addr} %></span>
+%   } else {
+          <a href="">
+            <%= $m->{from}->{full} %>
+          </a>
+%   }
+        </td>
+        <td>
+          <strong><%= $m->{subject} %></strong>
+          <i><%= $m->{body} %></i>
+        </td>
+      </tr>
+% }
+    </table>
+  </div>
+</div>
+
+<div id="navigation">
+  <div class="content">
+    <h2>Folders</h2>
+
+    <ul>
+% for my $f (@$folders) {
+%   if ($f eq $folder) {
+      <li><a href="?folder=<%= $f %>" class="active"><%= $f %></a></li>
+%   } else {
+      <li><a href="?folder=<%= $f %>"><%= $f %></a></li>
+%   }
+% }
+    </ul>
+  </div>
+</div>

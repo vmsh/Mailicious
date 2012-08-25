@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Sans-serif;
+  font-size: 11px;
+}
+
+h1, h2 {
+  font-size: 2em;
+  padding: 0.5em 0;
+}
+
+p {
+  padding: 5px 0;
+}
+
+p.folder_status {
+  display: block;
+  text-align: right;
+}
+
+div#header {
+  background-color: #bae;
+  height: 50px;
+  padding-bottom: 5px;
+}
+
+div#navigation div.content,
+div#header div.content {
+  padding: 10px;
+}
+
+div#wrapper {
+  float: left;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+div#wrapper div.content {
+  margin: 0 20px 0 250px;
+}
+
+div#navigation {
+  float: left;
+  margin-left: -100%;
+  width: 250px;
+}
+
+div#navigation div.content ul {
+  list-style-type: none;
+}
+
+div#navigation div.content ul li {
+}
+
+div#navigation div.content ul li a {
+  color: #00f;
+  display: block;
+  padding: 3px;
+  text-decoration: none;
+}
+
+div#navigation div.content ul li a:hover {
+  background-color: #ccd;
+  color: #000;
+}
+
+div#navigation div.content ul li a.active {
+  background-color: #ccd;
+  color: #000;
+  font-weight: bold;
+}
+
+div#main {
+  float: left;
+  margin: 0 0 0 250px;
+}
+
+table {
+  background-color: #ccc;
+  border-spacing: 1px;
+  text-align: left;
+  width: 100%;
+}
+
+table tr th {
+  background-color: #eee;
+  font-size: 14px;
+  padding: 5px;
+}
+
+table tr td {
+  background-color: #fff;
+  padding: 5px;
+}
+
+table tr td a {
+  text-decoration: none;
+}
+
+table tr td a:hover {
+  text-decoration: underline;
+}
+
+table tr:hover td {
+  background-color: #eee;
+}
+
+span.addr {
+	color: #666;
+	font-size: 0.8em;
+}
