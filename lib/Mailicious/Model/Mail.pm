@@ -18,11 +18,6 @@ has imap => sub {
   return $imap;
 };
 
-sub new {
-  my $class = shift;
-  bless {}, ref $class || $class;
-}
-
 sub get_folders {
   my $self = shift;
 
