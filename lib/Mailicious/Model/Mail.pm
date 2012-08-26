@@ -8,9 +8,9 @@ has imap => sub {
   my $self = shift;
 
   my $imap = Net::IMAP::Client->new(
-    server => '',
-    user   => '',
-    pass   => '',
+    server => $self->{server},
+    user   => $self->{user},
+    pass   => $self->{pass},
     ssl    => 1,
     port   => 993
   ) or croak "Could not connect to IMAP server";

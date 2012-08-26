@@ -19,7 +19,13 @@ sub startup {
 sub setup_model {
   my $self = shift;
 
-  my $model = Mailicious::Model::Mail->new();
+  my $model = Mailicious::Model::Mail->new(
+    {
+      server => $self->config->{imap}->{server},
+      user   => $self->config->{imap}->{user},
+      pass   => $self->config->{imap}->{pass},
+    }
+  );
 
   $self->helper(model => sub { $model });
 }
