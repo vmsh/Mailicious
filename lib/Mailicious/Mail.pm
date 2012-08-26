@@ -4,7 +4,7 @@ use Mailicious::Model::Mail;
 
 # List folders
 sub index {
-  my $self   = shift;
+  my $self = shift;
 
   my $folder = $self->param('folder') || 'INBOX';
 

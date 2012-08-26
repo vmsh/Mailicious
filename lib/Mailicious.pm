@@ -27,7 +27,7 @@ sub setup_model {
     }
   );
 
-  $self->helper(model => sub { $model });
+  $self->helper(model => sub {$model});
 }
 
 1;

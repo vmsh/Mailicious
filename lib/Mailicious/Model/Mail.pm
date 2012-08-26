@@ -37,11 +37,15 @@ sub get {
 
   my $no_of_messages = scalar(@{$messages});
 
-  return {folder => $folder, messages => [], no_of_messages => $no_of_messages}
+  return {
+    folder         => $folder,
+    messages       => [],
+    no_of_messages => $no_of_messages
+    }
     unless ($no_of_messages);
 
   # NOTE: This is unpretty
-  my $start = ($no_of_messages-30);
+  my $start = ($no_of_messages - 30);
   $start = 1 if ($start < 1);
 
   my @range = ($start .. $no_of_messages);
@@ -61,10 +65,10 @@ sub get {
       = split(/\n/, $hash->{'BODY[HEADER.FIELDS (SUBJECT FROM)]'});
 
     foreach (@mail_headers) {
-        chop($_);
+      chop($_);
 
-        $subject = $1 if (s/^Subject: (.*)//);
-        $from    = $1 if (s/^From: (.*)//);
+      $subject = $1 if (s/^Subject: (.*)//);
+      $from    = $1 if (s/^From: (.*)//);
     }
 
     $from =~ m/([^<(]+) [<(]([^@]+@[^>]+)[)>]/;
@@ -77,18 +81,18 @@ sub get {
       {
         uid     => $uid,
         flags   => $flags,
-        from    => {
-          addr  => $addr,
-          name  => $name,
-          full  => $from,
-        },
+        from    => {addr => $addr, name => $name, full => $from},
         subject => $subject,
-        body    => $body,
+        body    => $body
       }
     );
   }
 
-  return {folder => $folder, messages => $m, no_of_messages => $no_of_messages};
+  return {
+    folder         => $folder,
+    messages       => $m,
+    no_of_messages => $no_of_messages
+  };
 }
 
 1;
