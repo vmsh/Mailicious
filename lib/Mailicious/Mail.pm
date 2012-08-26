@@ -2,22 +2,16 @@ package Mailicious::Mail;
 use Mojo::Base 'Mojolicious::Controller';
 use Mailicious::Model::Mail;
 
-has model => sub {
-  my $self = shift;
-
-  my $model = Mailicious::Model::Mail->new();
-
-  return $model;
-};
-
 # List folders
 sub index {
   my $self   = shift;
 
   my $folder = $self->param('folder') || 'INBOX';
 
-  my $result = $self->model->get($folder);
-  my $folders = $self->model->get_folders();
+  my $model = $self->app->model;
+
+  my $result  = $model->get($folder);
+  my $folders = $model->get_folders();
 
   $self->stash(
     folders        => $folders,

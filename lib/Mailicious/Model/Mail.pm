@@ -2,18 +2,20 @@ package Mailicious::Model::Mail;
 use Mojo::Base 'Mojolicious::Controller';
 use Email::MIME::Encodings;
 use Net::IMAP::Client;
+use Carp qw/ croak/;
 
 has imap => sub {
   my $self = shift;
 
-  # TODO: This should be fetched from something like Mojolicious::Plugin::Config
   my $imap = Net::IMAP::Client->new(
     server => '',
     user   => '',
     pass   => '',
     ssl    => 1,
     port   => 993
-  ) or die "Could not connect to IMAP server";
+  ) or croak "Could not connect to IMAP server";
+
+  $imap->login or croak('Login failed: ' . $imap->last_error);
 
   return $imap;
 };
@@ -27,8 +29,6 @@ sub get_folders {
 sub get {
   my $self = shift;
   my $folder = shift || 'INBOX';
-
-  $self->imap->login or die('Login failed: ' . $self->imap->last_error);
 
   $self->imap->select($folder);
 
