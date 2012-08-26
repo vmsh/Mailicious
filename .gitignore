@@ -1,4 +1,5 @@
 mailicious.conf
+log/*.log
 .*.sw[op]
 blib/
 .build/
