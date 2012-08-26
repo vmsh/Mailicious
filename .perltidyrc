@@ -1,0 +1,22 @@
+# Perl Best Practices
+-bbt=1
+-cti=0
+-nolq
+-nsfs
+-se
+-wbb="% + - * / x != == >= <= =~ !~ < > | & = **= += *= &= <<= &&= -= /= |= >>= ||= //= .= %= ^= x="
+
+# Modifications
+-b              # we use version control, so just rewrite the file
+-bext=perltidy  # custom extension for script
+-bt=2           # High brace tightness
+-ci=2           # Continuation indentation is 2 columns
+-i=2            # Indentation is 2 columns
+-iob            # Ignore old breakpoints
+-isbc           # Don't indent comments without leading space
+-l=79           # 79 characters per line
+-mbl=2          # No more than 2 blank lines
+-pt=2           # High parenthesis tightness
+-sbt=2          # High square bracket tightness
+-vt=0           # Less vertical tightness
+-w              # Show all warnings

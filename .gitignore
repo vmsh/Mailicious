@@ -1,6 +1,7 @@
 mailicious.conf
 log/*.log
 .*.sw[op]
+*.perltidy
 blib/
 .build/
 _build/
