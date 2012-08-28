@@ -15,6 +15,18 @@ sub startup {
 
   $r->get('/')->to('folder#index');
   $r->get('/folder/:folder')->name('folder')->to('folder#show');
+  $r->get('/message/:folder/:message')->name('message')->to('message#show');
+
+  $self->helper(
+    nl2br => sub {
+      shift;
+      my $string = shift;
+
+      $string =~ s/\n/<br>/g;
+
+      return $string;
+    }
+  );
 }
 
 sub setup_model {

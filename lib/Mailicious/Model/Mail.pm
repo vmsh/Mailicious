@@ -94,4 +94,23 @@ sub get {
   };
 }
 
+sub message {
+  my ($self, $folder, $message_id) = @_;
+  croak('folder missing')     unless defined($folder);
+  croak('message_id missing') unless defined($message_id);
+
+  $self->imap->select($folder);
+
+  my $message = $self->imap->fetch($message_id,
+    'UID FLAGS RFC822.SIZE BODY.PEEK[HEADER] BODY.PEEK[TEXT]');
+
+  use Data::Dumper;
+  print Dumper($message);
+
+  croak('No such e-mail') unless (defined($message));
+
+  return $message;
+}
+
 1;
+

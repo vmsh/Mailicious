@@ -36,7 +36,7 @@
 %   }
         </td>
         <td>
-          <strong><%= $m->{subject} %></strong>
+          <strong><a href="<%= url_for('message', folder => $folder, message => $m->{uid}) %>"><%= $m->{subject} %></a></strong>
           <i><%= $m->{body} %></i>
         </td>
       </tr>
