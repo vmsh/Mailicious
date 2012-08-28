@@ -3,5 +3,7 @@
     server => '',
     user   => '',
     pass   => '',
+    ssl    => 1,    # 1 to use SSL
+    port   => 143,  # 143 for imap, 993 for imaps
   }
 };

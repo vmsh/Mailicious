@@ -24,6 +24,8 @@ sub setup_model {
       server => $self->config->{imap}->{server},
       user   => $self->config->{imap}->{user},
       pass   => $self->config->{imap}->{pass},
+      ssl    => $self->config->{imap}->{ssl},
+      port   => $self->config->{imap}->{port},
     }
   );
 

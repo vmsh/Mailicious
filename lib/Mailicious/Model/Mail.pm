@@ -11,8 +11,8 @@ has imap => sub {
     server => $self->{server},
     user   => $self->{user},
     pass   => $self->{pass},
-    ssl    => 1,
-    port   => 993
+    ssl    => $self->{ssl},
+    port   => $self->{port}
   ) or croak "Could not connect to IMAP server";
 
   $imap->login or croak('Login failed: ' . $imap->last_error);
