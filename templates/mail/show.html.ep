@@ -10,7 +10,7 @@
 <div id="wrapper">
   <div class="content">
     <p class="folder_status">
-      Number of messages: <%= $no_of_messages %>,
+      Number of messages: <%= $no_of_messages %>
     </p>
 
     <table>
@@ -51,11 +51,9 @@
 
     <ul>
 % for my $f (@$folders) {
-%   if ($f eq $folder) {
-      <li><a href="?folder=<%= $f %>" class="active"><%= $f %></a></li>
-%   } else {
-      <li><a href="?folder=<%= $f %>"><%= $f %></a></li>
-%   }
+%   my $class = $f eq $folder ? 'active' : '';
+
+      <li><a href="<%= url_for('folder', folder => $f) %>" class="<%= $class %>"><%= $f %></a></li>
 % }
     </ul>
   </div>

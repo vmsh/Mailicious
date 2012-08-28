@@ -2,11 +2,18 @@ package Mailicious::Mail;
 use Mojo::Base 'Mojolicious::Controller';
 use Mailicious::Model::Mail;
 
-# List folders
+# By default, list content in INBOX
 sub index {
+	my $self = shift;
+
+	$self->redirect_to('folder', folder => 'INBOX');
+}
+
+# List folders
+sub show {
   my $self = shift;
 
-  my $folder = $self->param('folder') || 'INBOX';
+  my $folder = $self->param('folder');
 
   my $model = $self->app->model;
 

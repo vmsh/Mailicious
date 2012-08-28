@@ -14,6 +14,7 @@ sub startup {
   my $r = $self->routes;
 
   $r->get('/')->to('mail#index');
+  $r->get('/folder/:folder')->name('folder')->to('mail#show');
 }
 
 sub setup_model {
