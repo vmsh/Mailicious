@@ -33,7 +33,7 @@ sub get {
   $self->imap->select($folder);
 
   # fetch all message ids (as array reference)
-  my $messages = $self->imap->search('ALL', 'DATE');
+  my $messages = $self->imap->search('ALL NOT DELETED', 'DATE');
 
   my $no_of_messages = scalar(@{$messages});
 
