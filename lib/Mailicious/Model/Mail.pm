@@ -44,11 +44,7 @@ sub get {
     }
     unless ($no_of_messages);
 
-  # NOTE: This is unpretty
-  my $start = ($no_of_messages - 30);
-  $start = 1 if ($start < 1);
-
-  my @range = ($start .. $no_of_messages);
+  my @range = @{$messages}[0 .. 30];
 
   my $headers = 'BODY[HEADER.FIELDS (Subject From)]';
 
