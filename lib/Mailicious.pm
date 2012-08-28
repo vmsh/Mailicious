@@ -13,8 +13,8 @@ sub startup {
   # Router
   my $r = $self->routes;
 
-  $r->get('/')->to('mail#index');
-  $r->get('/folder/:folder')->name('folder')->to('mail#show');
+  $r->get('/')->to('folder#index');
+  $r->get('/folder/:folder')->name('folder')->to('folder#show');
 }
 
 sub setup_model {

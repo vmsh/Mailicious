@@ -1,4 +1,4 @@
-package Mailicious::Mail;
+package Mailicious::Folder;
 use Mojo::Base 'Mojolicious::Controller';
 use Mailicious::Model::Mail;
 
