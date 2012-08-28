@@ -4,9 +4,9 @@ use Mailicious::Model::Mail;
 
 # By default, list content in INBOX
 sub index {
-	my $self = shift;
+  my $self = shift;
 
-	$self->redirect_to('folder', folder => 'INBOX');
+  $self->redirect_to('folder', folder => 'INBOX');
 }
 
 # List folders
