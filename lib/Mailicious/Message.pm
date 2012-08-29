@@ -12,13 +12,11 @@ sub show {
   my $model = $self->app->model;
 
   my $result = $model->message($folder, $message);
-  my $folders = $model->get_folders;
 
   $self->stash(
     subject => 'Foobar',
     header  => $result->{'BODY[HEADER]'},
     body    => $result->{'BODY[TEXT]'},
-    folders => $folders,
   );
 }
 

@@ -1,8 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title><%= title %></title>
+    <title><%= title %></title>
     <link rel="stylesheet" href="/style.css" type="text/css">
   </head>
-  <body><%= content %></body>
+  <body>
+    <div id="header">
+      <div class="content">
+        <h1><%= title %></h1>
+      </div>
+    </div>
+
+
+    <div id="wrapper">
+      <div class="content">
+        <%= content %>
+      </div>
+    </div>
+
+    <div id="navigation">
+      <div class="content">
+        <h2>Folders</h2>
+
+        <ul>
+          % for my $f (@$folders) {
+          %   my $class = $f eq $folder ? 'active' : '';
+
+          <li><a href="<%= url_for('folder', folder => $f) %>" class="<%= $class %>"><%= $f %></a></li>
+          % }
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>

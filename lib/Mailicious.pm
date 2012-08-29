@@ -17,6 +17,13 @@ sub startup {
   $r->get('/folder/:folder')->name('folder')->to('folder#show');
   $r->get('/message/:folder/:message')->name('message')->to('message#show');
 
+  # Default stash
+  $self->defaults(
+	  layout  => 'default',
+	  folders => [$self->model->get_folders]
+  );
+
+  # Helpers
   $self->helper(
     nl2br => sub {
       shift;
