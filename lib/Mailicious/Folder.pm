@@ -17,7 +17,7 @@ sub show {
 
   my $model = $self->app->model;
 
-  my $result  = $model->get($folder);
+  my $result = $model->get($folder);
 
   $self->stash(
     folder         => $result->{folder},
