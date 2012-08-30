@@ -49,7 +49,7 @@ sub get {
 
   my @range = @{$messages}[0 .. $stop];
 
-  my $headers = 'BODY[HEADER.FIELDS (Subject From)]';
+  my $headers = 'BODY[HEADER.FIELDS (SUBJECT FROM)]';
 
   my $results = $self->imap->fetch(\@range, "FLAGS $headers");
 
@@ -60,8 +60,7 @@ sub get {
 
     my $uid = $hash->{UID};
 
-    my @mail_headers
-      = split(/\n/, $hash->{'BODY[HEADER.FIELDS (SUBJECT FROM)]'});
+    my @mail_headers = split(/\n/, $hash->{$headers});
 
     foreach (@mail_headers) {
       chop($_);
