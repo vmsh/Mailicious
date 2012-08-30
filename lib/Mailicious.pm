@@ -19,8 +19,8 @@ sub startup {
 
   # Default stash
   $self->defaults(
-	  layout  => 'default',
-	  folders => [$self->model->get_folders]
+    layout  => 'default',
+    folders => [$self->model->get_folders]
   );
 
   # Helpers
