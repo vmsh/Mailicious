@@ -49,11 +49,11 @@ sub get {
 
   my @range = @{$messages}[0 .. $stop];
 
-  my $headers = 'BODY[HEADER.FIELDS (SUBJECT FROM)]';
+  my $headers = 'BODY[HEADER.FIELDS (SUBJECT FROM DATE)]';
 
   my $results = $self->imap->fetch(\@range, "FLAGS $headers");
 
-  my ($m, $flags, $subject, $from, $body, @mail_headers);
+  my ($m, $flags, $subject, $from, $body, $date, @mail_headers);
 
   foreach my $hash (@$results) {
     $flags = join(" " . @{$hash->{FLAGS}}) . "\n";
@@ -67,6 +67,7 @@ sub get {
 
       $subject = $1 if (s/^Subject: (.*)//);
       $from    = $1 if (s/^From: (.*)//);
+      $date    = $1 if (s/^Date: (.*)//);
     }
 
     $from =~ m/([^<(]+) [<(]([^@]+@[^>]+)[)>]/;
@@ -81,6 +82,7 @@ sub get {
         flags   => $flags,
         from    => {addr => $addr, name => $name, full => $from},
         subject => $subject,
+        date    => $date,
         body    => $body
       }
     );
