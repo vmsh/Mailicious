@@ -110,8 +110,8 @@ table tr:hover td {
 }
 
 span.addr {
-	color: #666;
-	font-size: 0.8em;
+  color: #666;
+  font-size: 0.8em;
 }
 
 div#mail-header {
