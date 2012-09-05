@@ -36,6 +36,7 @@ sub get {
   my $status = {};
 
   $status->{no_of_messages} = $imap_status->{MESSAGES};
+  $status->{no_of_unseen}   = $imap_status->{UNSEEN};
 
   # fetch all message ids (as array reference)
   my $messages = $self->imap->search('ALL NOT DELETED', 'DATE');
