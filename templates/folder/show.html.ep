@@ -1,7 +1,7 @@
 % title "Mailicious | $folder";
 
     <p class="folder_status">
-      Number of messages: <%= $no_of_messages %>
+      Number of messages: <%= $folder_status->{no_of_messages} %>
     </p>
 
     <table>

@@ -20,9 +20,9 @@ sub show {
   my $result = $model->get($folder);
 
   $self->stash(
-    folder         => $result->{folder},
-    messages       => $result->{messages},
-    no_of_messages => $result->{no_of_messages},
+    folder        => $result->{folder},
+    folder_status => $result->{folder_status},
+    messages      => $result->{messages},
   );
 }
 

@@ -32,20 +32,23 @@ sub get {
 
   $self->imap->select($folder);
 
+  my $imap_status = $self->imap->status($folder);
+  my $status = {};
+
+  $status->{no_of_messages} = $imap_status->{MESSAGES};
+
   # fetch all message ids (as array reference)
   my $messages = $self->imap->search('ALL NOT DELETED', 'DATE');
 
-  my $no_of_messages = scalar(@{$messages});
-
   return {
     folder         => $folder,
-    messages       => [],
-    no_of_messages => $no_of_messages
+    folder_status  => $status,
+    messages       => []
     }
-    unless ($no_of_messages);
+    unless ($status->{no_of_messages});
 
   my $stop = 30;
-  $stop = $no_of_messages if ($no_of_messages < $stop);
+  $stop = $status->{no_of_messages} if ($status->{no_of_messages} < $stop);
 
   my @range = @{$messages}[0 .. $stop];
 
@@ -90,8 +93,8 @@ sub get {
 
   return {
     folder         => $folder,
-    messages       => $m,
-    no_of_messages => $no_of_messages
+    folder_status  => $status,
+    messages       => $m
   };
 }
 
