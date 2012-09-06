@@ -13,6 +13,9 @@ sub startup {
   # Router
   my $r = $self->routes;
 
+  $r->route('/folder/:folder', folder => qr{[^/]+})
+    ->to(controller => 'folder', action => 'show');
+
   $r->get('/')->to('folder#index');
   $r->get('/folder/:folder')->name('folder')->to('folder#show');
   $r->get('/message/:folder/:message')->name('message')->to('message#show');
