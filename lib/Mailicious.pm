@@ -16,6 +16,12 @@ sub startup {
   $r->route('/folder/:folder', folder => qr{[^/]+})
     ->to(controller => 'folder', action => 'show');
 
+  $r->route(
+    '/message/:folder/:message',
+    folder  => qr{[^/]+},
+    message => qr/\d+/
+  )->to(controller => 'message', action => 'show');
+
   $r->get('/')->to('folder#index');
   $r->get('/folder/:folder')->name('folder')->to('folder#show');
   $r->get('/message/:folder/:message')->name('message')->to('message#show');
