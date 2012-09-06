@@ -69,9 +69,9 @@ sub get {
     foreach (@mail_headers) {
       chop($_);
 
-      $subject = $1 if (s/^Subject: (.*)//);
-      $from    = $1 if (s/^From: (.*)//);
-      $date    = $1 if (s/^Date: (.*)//);
+      $subject = $1 if (s/^Subject:\s+(.*)//);
+      $from    = $1 if (s/^From:\s+(.*)//);
+      $date    = $1 if (s/^Date:\s+(.*)//);
     }
 
     $from =~ m/([^<(]+) [<(]([^@]+@[^>]+)[)>]/;
