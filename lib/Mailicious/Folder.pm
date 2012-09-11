@@ -14,10 +14,11 @@ sub show {
   my $self = shift;
 
   my $folder = $self->param('folder');
+  my $page   = $self->param('page') || 1;
 
   my $model = $self->app->model;
 
-  my $result = $model->get($folder);
+  my $result = $model->get($folder, $page);
 
   $self->stash(
     folder        => $result->{folder},

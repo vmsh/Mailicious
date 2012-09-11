@@ -29,6 +29,12 @@ sub get_folders {
 sub get {
   my $self = shift;
   my $folder = shift || 'INBOX';
+  my $page   = shift || 1;
+
+  my $messages_per_page = 20;
+
+  # Offset: 0 if page 1, 20 if page 2, et cetera
+  my $offset = ($messages_per_page * $page) - $messages_per_page;
 
   $self->imap->select($folder);
 
@@ -37,6 +43,7 @@ sub get {
 
   $status->{no_of_messages} = $imap_status->{MESSAGES};
   $status->{no_of_unseen}   = $imap_status->{UNSEEN};
+  $status->{page}           = $page;
 
   # fetch all message ids (as array reference)
   my $messages = $self->imap->search('ALL NOT DELETED', 'DATE');
@@ -48,10 +55,10 @@ sub get {
     }
     unless ($status->{no_of_messages});
 
-  my $stop = 30;
+  my $stop = $messages_per_page + $offset;
   $stop = $status->{no_of_messages} if ($status->{no_of_messages} < $stop);
 
-  my @range = @{$messages}[0 .. $stop];
+  my @range = @{$messages}[$offset .. $stop];
 
   my $headers = 'BODY[HEADER.FIELDS (SUBJECT FROM DATE)]';
 
