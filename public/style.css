@@ -123,3 +123,8 @@ div#mail-body {
   border: 1px solid #ccc;
   padding: 5px;
 }
+
+div.clear {
+  clear: both;
+  font-size: 0;
+}
