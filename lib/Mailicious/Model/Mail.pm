@@ -20,6 +20,12 @@ has imap => sub {
   return $imap;
 };
 
+sub get_capabilities {
+  my $self = shift;
+
+  return $self->imap->capability;
+}
+
 sub get_folders {
   my $self = shift;
 
