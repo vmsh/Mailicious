@@ -1,9 +1,9 @@
 % title "Mailicious | $folder";
 
-    <p class="folder_status">
+    <div class="folder_status">
       Number of messages: <%= $folder_status->{no_of_messages} %>,
         <%= $folder_status->{no_of_unseen} %> unread
-    </p>
+    </div>
 
     <table>
       <tr>
