@@ -5,6 +5,16 @@
         <%= $folder_status->{no_of_unseen} %> unread
     </div>
 
+    <div class="pager">
+      <ul class="buttons">
+        <li><a href="" class="active">Page: <%= $folder_status->{page} %></a></li>
+        <li><a href="<%= url_for('folder_page', folder => $folder, page => $folder_status->{page}-1) %>">Previous page</a></li>
+        <li><a href="<%= url_for('folder_page', folder => $folder, page => $folder_status->{page}+1) %>">Next page</a></li>
+      </ul>
+    </div>
+
+    <div class="clear">&nbsp;</div>
+
     <table>
       <tr>
         <th>UID</th>

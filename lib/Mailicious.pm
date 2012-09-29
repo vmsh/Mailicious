@@ -18,6 +18,7 @@ sub startup {
 
   $r->get('/')->to('folder#index');
   $r->get('/folder/#folder')->name('folder')->to('folder#show');
+  $r->get('/folder/#folder/:page')->name('folder_page')->to('folder#show');
   $r->get('/message/#folder/#message')->name('message')->to('message#show');
 
   # Default stash
