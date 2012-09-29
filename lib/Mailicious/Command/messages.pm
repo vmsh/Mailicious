@@ -3,7 +3,7 @@ use Mojo::Base 'Mojolicious::Command';
 use Mailicious::Model::Mail;
 
 has description => "List messages.\n";
-has usage       => "usage: $0 imap <list <folder>>\n";
+has usage       => "usage: $0 messages <list <folder>>\n";
 
 sub run {
   my $self    = shift;
