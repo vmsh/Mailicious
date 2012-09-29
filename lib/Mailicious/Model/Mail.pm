@@ -42,7 +42,7 @@ sub get {
   # Offset: 0 if page 1, 20 if page 2, et cetera
   my $offset = ($messages_per_page * $page) - $messages_per_page;
 
-  $self->imap->select($folder);
+  $self->imap->select($folder) or croak "Can't select folder: $folder";
 
   my $imap_status = $self->imap->status($folder);
   my $status = {};
@@ -117,7 +117,7 @@ sub message {
   croak('folder missing')     unless defined($folder);
   croak('message_id missing') unless defined($message_id);
 
-  $self->imap->select($folder);
+  $self->imap->select($folder) or croak "Can't select folder: $folder";
 
   my $message = $self->imap->fetch($message_id,
     'UID FLAGS RFC822.SIZE BODY.PEEK[HEADER] BODY.PEEK[TEXT]');
