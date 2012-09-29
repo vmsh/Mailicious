@@ -10,6 +10,9 @@ sub startup {
 
   $self->setup_model;
 
+  # Add custom commands
+  push @{$self->commands->namespaces}, 'Mailicious::Command';
+
   # Router
   my $r = $self->routes;
 
