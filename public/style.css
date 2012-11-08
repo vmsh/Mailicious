@@ -107,6 +107,15 @@ table {
   border-spacing: 1px;
   text-align: left;
   width: 100%;
+  border-collapse: collapse;
+}
+
+table tr {
+  border-top: 1px solid #ddd;
+}
+
+table tr:hover {
+  border-top: 1px solid #ccc;
 }
 
 table tr th {
@@ -129,7 +138,7 @@ table tr td a:hover {
 }
 
 table tr:hover td {
-  background-color: #eee;
+  background-color: #efe;
 }
 
 span.addr {
