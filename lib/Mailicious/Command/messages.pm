@@ -25,9 +25,15 @@ sub list {
 
   say "Messages:";
 
+  my $from;
   foreach my $m (@{$result->{messages}}) {
+    $from = $m->{from}->{full};
+
+    $from = $m->{from}->{name}
+      if ($m->{from}->{name});
+
     print <<TXT
- $m->{from}->{name} ... $m->{subject}
+ $from ... $m->{subject}
 TXT
   }
 }
