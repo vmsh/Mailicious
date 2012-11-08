@@ -52,7 +52,7 @@ sub get {
   $status->{page}           = $page;
 
   # fetch all message ids (as array reference)
-  my $messages = $self->imap->search('ALL NOT DELETED', 'DATE');
+  my $messages = $self->imap->search('ALL NOT DELETED', '^DATE');
 
   return {
     folder         => $folder,
