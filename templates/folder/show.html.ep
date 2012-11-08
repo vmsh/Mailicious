@@ -27,15 +27,11 @@
         <td><%= $m->{uid} %></td>
         <td>
 %   if ($m->{from}->{addr}) {
-          <a href="">
-            <strong><%= $m->{from}->{name} %></strong>
-          </a>
+          %= link_to $m->{from}->{name} => ''
           <br/>
           <span class="addr"><%= $m->{from}->{addr} %></span>
 %   } else {
-          <a href="">
-            <%= $m->{from}->{full} %>
-          </a>
+          %= link_to $m->{from}->{full} => ''
 %   }
         </td>
         <td>
