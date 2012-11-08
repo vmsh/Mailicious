@@ -25,24 +25,24 @@
         <th>Subject</th>
         <th>Date</th>
       </tr>
-% for my $m (@$messages) {
-      <tr>
-        <td><%= $m->{uid} %></td>
-        <td>
-%   if ($m->{from}->{addr}) {
-          %= link_to $m->{from}->{name} => ''
-          <br/>
-          <span class="addr"><%= $m->{from}->{addr} %></span>
-%   } else {
-          %= link_to $m->{from}->{full} => ''
-%   }
-        </td>
-        <td>
-          <strong><a href="<%= url_for('message', folder => $folder, message => $m->{uid}) %>"><%= $m->{subject} %></a></strong>
-          <i><%= $m->{body} %></i>
-        </td>
-        <td><%= $m->{date} %></td>
-      </tr>
-% }
+      % for my $m (@$messages) {
+        <tr>
+          <td><%= $m->{uid} %></td>
+          <td>
+            % if ($m->{from}->{addr}) {
+              %= link_to $m->{from}->{name} => ''
+              <br/>
+              <span class="addr"><%= $m->{from}->{addr} %></span>
+            % } else {
+              %= link_to $m->{from}->{full} => ''
+            % }
+          </td>
+          <td>
+            <strong><a href="<%= url_for('message', folder => $folder, message => $m->{uid}) %>"><%= $m->{subject} %></a></strong>
+            <i><%= $m->{body} %></i>
+          </td>
+          <td><%= $m->{date} %></td>
+        </tr>
+      % }
     </table>
 
