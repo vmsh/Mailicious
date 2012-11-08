@@ -89,8 +89,8 @@ sub get {
 
     $from =~ m/([^<(]+) [<(]([^@]+@[^>]+)[)>]/;
 
-    my $name = $1;
-    my $addr = $2;
+    my $name = $1 // '';
+    my $addr = $2 // '';
 
     push(
       @$m,
