@@ -38,9 +38,7 @@
             % }
           </td>
           <td>
-            <strong>
-              %= link_to $m->{subject} => "/message/$folder/$m->{uid}"
-            </strong>
+            %= link_to $m->{subject} => "/message/$folder/$m->{uid}"
             <i><%= $m->{body} %></i>
           </td>
           <td><%= $m->{date} %></td>
