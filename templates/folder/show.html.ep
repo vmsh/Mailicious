@@ -38,7 +38,9 @@
             % }
           </td>
           <td>
-            <strong><a href="<%= url_for('message', folder => $folder, message => $m->{uid}) %>"><%= $m->{subject} %></a></strong>
+            <strong>
+              %= link_to $m->{subject} => "/message/$folder/$m->{uid}"
+            </strong>
             <i><%= $m->{body} %></i>
           </td>
           <td><%= $m->{date} %></td>
