@@ -1,4 +1,4 @@
-% title "Mailicous | $subject";
+% title "Mailicious | $subject";
 
     <div id="mail-header">
       <%== nl2br $header %>
