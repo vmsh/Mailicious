@@ -25,6 +25,11 @@ sub show {
     folder_status => $result->{folder_status},
     messages      => $result->{messages},
   );
+
+  $self->respond_to(
+      json => { json => $result },
+      html => {},
+  );
 }
 
 1;

@@ -16,9 +16,18 @@ sub startup {
   # Router
   my $r = $self->routes;
 
+  # TODO: More pretty routes for .json format?
+  # Remember folder names may contain full stops.
+
   $r->get('/')->to('folder#index');
+
+  $r->get('/folder/#folder.json')->to('folder#show', format => 'json');
   $r->get('/folder/#folder')->name('folder')->to('folder#show');
+
+  $r->get('/folder/#folder/:page.json')->to('folder#show', format => 'json');
   $r->get('/folder/#folder/:page')->name('folder_page')->to('folder#show');
+
+  $r->get('/message/#folder/#message.json')->to('message#show', format => 'json');
   $r->get('/message/#folder/#message')->name('message')->to('message#show');
 
   # Default stash

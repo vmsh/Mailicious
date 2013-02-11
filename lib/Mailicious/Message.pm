@@ -13,10 +13,17 @@ sub show {
 
   my $result = $model->message($folder, $message);
 
-  $self->stash(
+  my $stash = {
     subject => 'Foobar',
     header  => $result->{'BODY[HEADER]'},
     body    => $result->{'BODY[TEXT]'},
+  };
+
+  $self->stash($stash);
+
+  $self->respond_to(
+      json => { json => $stash },
+      html => {},
   );
 }
 
