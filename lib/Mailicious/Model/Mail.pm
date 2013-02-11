@@ -29,7 +29,17 @@ sub get_capabilities {
 sub get_folders {
   my $self = shift;
 
-  return $self->imap->folders;
+  my $folders = $self->imap->folders;
+  my @folders_reordered;
+
+  # Pragmatic way of putting INBOX as first result
+  push (@folders_reordered, 'INBOX');
+
+  foreach my $f (@$folders) {
+    push (@folders_reordered, $f) unless ($f eq 'INBOX');
+  }
+
+  return @folders_reordered;
 }
 
 sub get {
