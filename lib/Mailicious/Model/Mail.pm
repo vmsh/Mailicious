@@ -73,7 +73,7 @@ sub get {
   my ($m, $flags, $subject, $from, $body, $date, @mail_headers);
 
   foreach my $hash (@$results) {
-    $flags = join(" " . @{$hash->{FLAGS}}) . "\n";
+    $flags = join(" ", @{$hash->{FLAGS}}) . "\n";
 
     my $uid = $hash->{UID};
 
